@@ -2,11 +2,21 @@ import React, { useState } from "react";
 
 function App() {
   const [inputs, setInputs] = useState({});
+  const [myCar, setMycar] = useState('Volvo')
+  const [textarea, setTextarea] = useState("Type your message here...")
 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs(values => ({...values, [name]: value}))
+  }
+
+  const handleCar = (event) => {
+    setMycar(event.target.value)
+  }
+
+  const handleText = (event) => {
+    setTextarea(event.target.value)
   }
 
   const handleSubmit = (event) => {
@@ -25,6 +35,7 @@ function App() {
           onChange={handleChange}
         />
       </label>
+      <br></br>
       <label>
         Enter your age:
         <input
@@ -34,6 +45,15 @@ function App() {
           onChange={handleChange}
         />
       </label>
+      <br></br>
+      <select value={myCar} onChange={handleCar}>
+        <option value="Ford">Ford</option>
+        <option value='Volvo'>Volvo</option>
+        <option value='Fiat'>Fiat</option>
+        <option value='Benz'>Benz</option>
+      </select>
+      <br></br>
+      <textarea value={textarea} onChange={handleText} />
 
       <input type='submit' />
     </form>
